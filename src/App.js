@@ -22,12 +22,10 @@ function buildMT(){
   let numbers = [...Array(9).keys()];
 
   let res = numbers.map((number) => (
-      numbers.map((number2) => <td>{(number+1)*(number2+1)}</td>
+      numbers.map((number2) => <td key={number +","+number2}>{(number+1)*(number2+1)}</td>
     )
     
   ));
-
- console.log(res);
 
   return res;
 
@@ -43,9 +41,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        {rows.map((row, i) => {
-          return <tr>{row}</tr>;
-        })}
+        <table>
+          <tbody>
+            {rows.map((row, i) => {
+              return <tr key={i}>{row}</tr>;
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }
